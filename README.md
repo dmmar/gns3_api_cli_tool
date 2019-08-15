@@ -2,7 +2,7 @@
 
 ## Overview
 
-   This repository contains simple python3 script to communicate with GNS3 server via API. 
+   This repository contains a simple python3 script to communicate with GNS3 server via API. 
    
    For example, to create/delete/start nodes etc.
    
@@ -30,4 +30,4 @@
     
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/dmmar/gns3_api_cli_tool/blob/master/LICENSE.md) file for details.

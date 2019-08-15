@@ -8,7 +8,7 @@
    
    This script is useful because you do not need to open GNS3 GUI to communicate with server.
    
-   P.S. Author is not an expert, he is learning how to code. Errors can be exist.
+   P.S. Author is not an expert, he is learning how to code. Errors can exist.
    
    **Screenshots:**
    

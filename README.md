@@ -13,8 +13,6 @@
    **Screenshots:**
    
    ![main_menu](https://github.com/dmmar/gns3_api_cli_tool/blob/master/Screenshots/main_menu.png "main_menu.png")
-   ![example1.png](https://github.com/dmmar/gns3_api_cli_tool/blob/master/Screenshots/example1.png "example1.png")
-
 
 ## Prerequisites
 

@@ -356,6 +356,8 @@ def gns3_get_appliances_names_and_id():
 
 def gns3_create_node(project_id):
 
+    gns3_show_available_nodes(project_id)
+
     gns3_appliances = gns3_get_appliances_names_and_id()
     t_available_appliances = PrettyTable(['Appliance Name', 'ID'])
 
@@ -379,6 +381,7 @@ def gns3_create_node(project_id):
 
     for key, value in gns3_appliances.items():
         if gns3_input_appliance == key:
+            # Built in GNS3
             if gns3_input_appliance == 'Cloud':
                 cloud_payload = '{"name": "' + gns3_input_appliance_name + \
                                 '", "node_type": "cloud", "compute_id": "local"}'
@@ -417,6 +420,83 @@ def gns3_create_node(project_id):
                     print(vpcs_r)
                     print('that is not working, please try again.')
                     return
+            elif gns3_input_appliance == 'NAT':
+                nat_payload = '{"name": "' + gns3_input_appliance_name + \
+                               '", "node_type": "nat", "compute_id": "local"}'
+                nat_r = requests.post(gns3_server + '/v2/projects/' + project_id + '/nodes', data=nat_payload)
+                if nat_r:
+                    nat_r_dict = nat_r.json()
+                    nat_new_id = nat_r_dict['node_id']
+                    print()
+                    print(gns3_input_appliance_name, 'is created.', nat_new_id)
+                    print()
+                    ask = input('Do you want to create one more? [y/n] : ')
+                    if ask == 'n':
+                        return
+                    elif ask == 'y':
+                        gns3_create_node(project_id)
+                else:
+                    print(nat_r)
+                    print('that is not working, please try again.')
+                    return
+            elif gns3_input_appliance == 'Frame Relay switch':
+                fr_sw_payload = '{"name": "' + gns3_input_appliance_name + \
+                               '", "node_type": "frame_relay_switch", "compute_id": "local"}'
+                fr_sw_r = requests.post(gns3_server + '/v2/projects/' + project_id + '/nodes', data=fr_sw_payload)
+                if fr_sw_r:
+                    fr_sw_r_dict = fr_sw_r.json()
+                    fr_sw_new_id = fr_sw_r_dict['node_id']
+                    print()
+                    print(gns3_input_appliance_name, 'is created.', fr_sw_new_id)
+                    print()
+                    ask = input('Do you want to create one more? [y/n] : ')
+                    if ask == 'n':
+                        return
+                    elif ask == 'y':
+                        gns3_create_node(project_id)
+                else:
+                    print(fr_sw_r)
+                    print('that is not working, please try again.')
+                    return
+            elif gns3_input_appliance == 'Ethernet hub':
+                eth_hub_payload = '{"name": "' + gns3_input_appliance_name + \
+                               '", "node_type": "ethernet_hub", "compute_id": "local"}'
+                eth_hub_r = requests.post(gns3_server + '/v2/projects/' + project_id + '/nodes', data=eth_hub_payload)
+                if eth_hub_r:
+                    eth_hub_r_dict = eth_hub_r.json()
+                    eth_hub_new_id = eth_hub_r_dict['node_id']
+                    print()
+                    print(gns3_input_appliance_name, 'is created.', eth_hub_new_id)
+                    print()
+                    ask = input('Do you want to create one more? [y/n] : ')
+                    if ask == 'n':
+                        return
+                    elif ask == 'y':
+                        gns3_create_node(project_id)
+                else:
+                    print(eth_hub_r)
+                    print('that is not working, please try again.')
+                    return
+            elif gns3_input_appliance == 'Ethernet switch':
+                eth_sw_payload = '{"name": "' + gns3_input_appliance_name + \
+                               '", "node_type": "ethernet_switch", "compute_id": "local"}'
+                eth_sw_r = requests.post(gns3_server + '/v2/projects/' + project_id + '/nodes', data=eth_sw_payload)
+                if eth_sw_r:
+                    eth_sw_r_dict = eth_sw_r.json()
+                    eth_sw_new_id = eth_sw_r_dict['node_id']
+                    print()
+                    print(gns3_input_appliance_name, 'is created.', eth_sw_new_id)
+                    print()
+                    ask = input('Do you want to create one more? [y/n] : ')
+                    if ask == 'n':
+                        return
+                    elif ask == 'y':
+                        gns3_create_node(project_id)
+                else:
+                    print(eth_sw_r)
+                    print('that is not working, please try again.')
+                    return
+            # Added manually
             else:
                 appliance_id = value
                 r_create_node = requests.post(gns3_server + '/v2/projects/' + project_id + '/appliances/'

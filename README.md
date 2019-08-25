@@ -8,9 +8,9 @@
    
    This script is useful because you do not need to open GNS3 GUI to communicate with server.
    
-   Tested on GNS3 2.1.21.
+   **Tested on GNS3 2.1.21.**
    
-   The script does not support GNS3 server authentication login/pass for now.
+   *The script does not support GNS3 server authentication login/pass for now.*
    
    P.S. Author is not an expert, he is learning how to code. Errors can exist.
    

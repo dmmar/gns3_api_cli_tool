@@ -591,6 +591,7 @@ def main():
         print('#' * 50)
     while True:
         print_gns3_menu()
+        print('If you would like to finish, type "exit".')
         choice = input("Enter your choice [1-7]: ")
         if choice == '1':
             gns3_create_new_project()
@@ -611,6 +612,8 @@ def main():
             gns3_delete_a_link_pair(project_id)
         elif choice == '7':
             gns3_delete_project()
+        elif choice == 'exit':
+            exit()
         else:
             input("Wrong menu selection. Enter any key to try again..")
 

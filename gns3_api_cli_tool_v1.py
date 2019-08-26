@@ -589,6 +589,10 @@ def main():
         print("6. To delete a link pair.")
         print("7. To delete a project.")
         print('#' * 50)
+        print("8. To show nodes in the project.")
+        print("9. To show link pairs in the project.")
+        print("10. To show GNS3 projects.")
+        print('#' * 50)
     while True:
         print_gns3_menu()
         print('If you would like to finish, type "exit".')
@@ -612,6 +616,15 @@ def main():
             gns3_delete_a_link_pair(project_id)
         elif choice == '7':
             gns3_delete_project()
+        elif choice == '8':
+            project_id = gns3_select_project()
+            gns3_show_available_nodes(project_id)
+        elif choice == '9':
+            project_id = gns3_select_project()
+            gns3_show_links(project_id)
+        elif choice == '10':
+            t_show_projects = gns3_show_projects()
+            print(t_show_projects)
         elif choice == 'exit':
             exit()
         else:

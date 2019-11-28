@@ -16,7 +16,7 @@
    
    **Screenshots:**
    
-   ![main_menu](https://github.com/dmmar/gns3_api_cli_tool/blob/master/Screenshots/main_menu.png "main_menu.png")
+   ![main_menu](https://github.com/dmmar/gns3_api_cli_tool/blob/master/Screenshots/main_menu.png "main_menu_new.png")
    
    **Sample video:**
    (https://youtu.be/z2oXdC4Lfl0)

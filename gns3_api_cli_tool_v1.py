@@ -562,6 +562,29 @@ def gns3_delete_project():
         return
 
 
+def gns3_show_available_appliances(gns3_server):
+    gns3_appliances_dict = {}
+    show_appliances = requests.get(gns3_server + '/v2/appliances')
+    if show_appliances:
+        show_appliances_dict = show_appliances.json()
+        for appliance in show_appliances_dict:
+            gns3_get_appliance_name = appliance['name']
+            gns3_get_appliance_id = appliance['appliance_id']
+            gns3_show_appliances = gns3_get_appliance_name, gns3_get_appliance_id
+            gns3_appliance_name = gns3_show_appliances[0]
+            gns3_appliance_id = gns3_show_appliances[1]
+            gns3_appliances_dict.update({gns3_appliance_name: gns3_appliance_id})
+        gns3_appliances = gns3_appliances_dict
+        t_available_appliances = PrettyTable(['Appliance Name', 'ID'])
+        for key, value in gns3_appliances.items():
+            t_available_appliances.add_row([key, value])
+        return t_available_appliances
+    else:
+        print(show_appliances)
+        print('that is not working.')
+        exit()
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-s', action='store', dest='gns3_server', required=True,
                     help='GNS3 server, for example: http://172.16.1.1:3080')
@@ -592,11 +615,12 @@ def main():
         print("8. To show nodes in the project.")
         print("9. To show link pairs in the project.")
         print("10. To show GNS3 projects.")
+        print("11. To show GNS3 available appliances.")
         print('#' * 50)
     while True:
         print_gns3_menu()
         print('If you would like to finish, type "exit".')
-        choice = input("Enter your choice [1-7]: ")
+        choice = input("Enter your choice [1-11]: ")
         if choice == '1':
             gns3_create_new_project()
         elif choice == '2':
@@ -625,6 +649,9 @@ def main():
         elif choice == '10':
             t_show_projects = gns3_show_projects()
             print(t_show_projects)
+        elif choice == '11':
+            t_show_gns3_appliances = gns3_show_available_appliances(gns3_server)
+            print(t_show_gns3_appliances)
         elif choice == 'exit':
             exit()
         else:

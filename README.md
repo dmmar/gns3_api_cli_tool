@@ -8,7 +8,7 @@
    
    This script is useful because you do not need to open GNS3 GUI to communicate with server.
    
-   **Tested on GNS3 2.1.21.**
+   **Tested on GNS3 2.1.21. and 2.2.7 **
    
    *The script does not support GNS3 server authentication login/pass for now.*
    
@@ -31,9 +31,13 @@
     # git clone https://github.com/dmmar/gns3_api_cli_tool.git
     # pip3 install -r requirements.txt
     
-## Running the script
+## Running the script 
 
+    [GNS3 2.1.21]
     # python3 gns3_api_cli_tool_v1.py -s http://127.0.0.1:3080
+    
+    [GNS3 2.2.7]
+    # python3 gns3_api_cli_tool_v1_1.py -s http://127.0.0.1:3080
     
 ## License
 

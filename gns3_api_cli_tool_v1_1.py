@@ -336,14 +336,14 @@ def gns3_get_appliances_names_and_id():
 
     gns3_appliances_dict = {}
 
-    show_appliances = requests.get(gns3_server + '/v2/appliances')
+    show_appliances = requests.get(gns3_server + '/v2/templates')
 
     if show_appliances:
         show_appliances_dict = show_appliances.json()
         for appliance in show_appliances_dict:
 
             gns3_get_appliance_name = appliance['name']
-            gns3_get_appliance_id = appliance['appliance_id']
+            gns3_get_appliance_id = appliance['template_id']
 
             gns3_show_appliances = gns3_get_appliance_name, gns3_get_appliance_id
 
